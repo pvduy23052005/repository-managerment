@@ -1,12 +1,10 @@
 // tao model cho data base  .  
 const mongoose = require("mongoose");
 const slug = require("mongoose-slug-updater"); 
-
 mongoose.plugin(slug); 
 
 // dinh dang cac truong muon lay ra trong database . 
 const productSchema = new mongoose.Schema({
-   id : String , 
    product_category_id : {
       type : String , 
       default : ""
@@ -27,9 +25,10 @@ const productSchema = new mongoose.Schema({
    giam: Number, 
    status : String ,
    position : Number
-});
+}, {
+   timestamps : true 
+}
+);
 
-// product ten hinh dat . 
-// products : ten database .
-const Product = mongoose.model('product', productSchema, "products");
+const Product = mongoose.model('Product', productSchema, "products");
 module.exports = Product; 
